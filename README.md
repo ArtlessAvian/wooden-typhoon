@@ -6,20 +6,16 @@ Inspired by a post on the "Good Bad Ideas" board.
 lol idk.
 
 ## Contributing
-Avoid working in the master branch.
+Avoid working directly in the master branch, unless its trivial.
 
-There will be a `main-features` branch to work on mechanics/features and a `main-game` branch to work on assets/design.
+To add/edit anything, create a new branch from master.
+Then, make the changes, and once its 100% done, merge back into master.
 
-`main-features` will merge into `main-game` whenever a feature is finished.
+[this](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow) explains it better.
+Ideally, master should only have complete commits.
 
-`main-game` will merge into `master` whenever there's a reasonable milestone.
-
-### Programmers
+### CLI Users
 
 It's no big deal, but:
-
-To pull, use `git pull --rebase` to keep the commit history clean.
-
-To merge, use `git merge --squash` for the same reason.
-
-`git pull`, `git push`, and `git merge` are all fine though.
+* To pull, use `git pull --rebase` to keep the commit history clean.
+* To merge, use `git merge --squash` for the same reason.
