@@ -6,30 +6,38 @@ using UnityEngine;
 
 public class PlayerData : MonoBehaviour {
 
+	[Serializable]
+	public class PlayerStats {
+		public float health = 0;
+		public float attack = 0;
+
+		public PlayerStats() {}
+
+		public PlayerStats(PlayerStats toCopy) {
+			health = toCopy.health;
+			attack = toCopy.attack;
+		}
+
+		public void RegenerateStats() {
+			health = 10 + UnityEngine.Random.value * 20;
+		}
+    }
+
 	// TODO: Someone figure out how to gray out the stats.
 	// In the meantime, itll be super not gray.
 	// public class PlayerDataInspector : EditorWindow {
 
 	// }
 
-	public bool generateOnPlay = true;
-
-	public float base_health;
-	public float base_attack;
+	public bool regenerateOnPlay = true;
+	public PlayerStats baseStats = new PlayerStats();
 
 	void Start () {
         // Destroy me on Title Screen
         UnityEngine.Object.DontDestroyOnLoad(this);
 
-		if (generateOnPlay)
-		{
-			generateBaseStats();
+		if (regenerateOnPlay) {
+			baseStats.RegenerateStats();			
 		}
 	}
-
-    private void generateBaseStats()
-    {
-        // throw new NotImplementedException();
-		base_health = 10 + UnityEngine.Random.value * 20;
-    }
 }
