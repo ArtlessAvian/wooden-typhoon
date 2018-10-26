@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class WeaponCollected : MonoBehaviour {
 
-	public Vector3 size = new Vector3(0.5f, 2, 1);
+	public Vector3 size = new Vector3(2f, 2, 1);
 	
 	public int preSwingFrames = 0;
-	public int followThrough = 30;
+	public int followThrough = 15;
 	public int activeFrames = 10;
 
 	private bool swinging = false;

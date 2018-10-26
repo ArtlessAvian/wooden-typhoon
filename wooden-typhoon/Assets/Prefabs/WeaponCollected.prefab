@@ -107,6 +107,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e2c0c0ba6f8278459e3c30a007323a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  size: {x: 2, y: 2, z: 1}
+  preSwingFrames: 0
+  followThrough: 15
+  activeFrames: 10
 --- !u!212 &212586252791982570
 SpriteRenderer:
   m_ObjectHideFlags: 1

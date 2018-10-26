@@ -31,7 +31,7 @@ public class Floorplan : MonoBehaviour {
 			enemyHurtbox.onDie += enemyDieCallback;
 		}
 
-		public void enemyDieCallback(GameObject enemy) {
+		public void enemyDieCallback(GameObject enemy, Collider2D other) {
 			enemies.Remove(enemy);
 			if (enemies.Count == 0) {
 				cleared = true;
