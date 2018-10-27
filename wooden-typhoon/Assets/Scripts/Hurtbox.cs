@@ -64,23 +64,26 @@ public class Hurtbox : MonoBehaviour {
 		if (redFlash == 0) {
 			redFlash--;
 			my_spriteRenderer.color = new Color(1,1,1,1);
+			ignoreHits = null;
 		}
 	}
 
-	// Collider2D justHit;
+	GameObject ignoreHits;
 	void OnTriggerEnter2D(Collider2D other)
 	{
 		// Ask the other how much it should be hit for
 		// Somehow :/
-		print("hello");
 		print(gameObject.name + " hit by " + other.gameObject.name);
 		
+		if (other.gameObject.Equals(ignoreHits)) {return;}
 		if (other.gameObject.layer != HITBOX_LAYER) {return;}
 		if (other.tag == tag) {return;} // ignore self collision
 		print("damage dealt!");
 
 		// Testing
 		
+		ignoreHits = other.gameObject;
+
 		knockback = transform.position;
 		knockback -= (Vector2)other.gameObject.transform.parent.position;
 		knockback *= 10 / knockback.magnitude;
@@ -91,5 +94,10 @@ public class Hurtbox : MonoBehaviour {
 		{
 			onDie(gameObject, other);
 		}
+	}
+
+	void OnTriggerStay2D(Collider2D other)
+	{
+		OnTriggerEnter2D(other);
 	}
 }
