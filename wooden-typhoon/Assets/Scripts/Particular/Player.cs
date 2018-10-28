@@ -2,25 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Rigidbody2D), typeof(StateMachine))]
 public class Player : MonoBehaviour {
 
-	delegate void AddVelocity(Vector2 internalVel);
-	AddVelocity addVelocity;
-
 	private Vector2 inputVec = new Vector2();
-    private Vector2 internalVel = new Vector2();
 
 	private Rigidbody2D myRigidbody2d;
 	private Hurtbox myHurtbox;
+	private StateMachine myStateMachine;
+	private SpriteRenderer mySpriteRenderer;
 
     void Start () {
 		myRigidbody2d = GetComponent<Rigidbody2D>();
 		myHurtbox = GetComponent<Hurtbox>();
+		myStateMachine = GetComponent<StateMachine>();
+		mySpriteRenderer = GetComponent<SpriteRenderer>();
 
 		// Manually Destroy Me
 		UnityEngine.Object.DontDestroyOnLoad(this);
+
+		myStateMachine.SetState(WalkState);
+		myHurtbox.onHit += myHurtbox.ApplyMutualRecoil;
 	}
+
+	private Color iFrameColor = new Color(1, 1, 1, 1);
 
 	void Update () {
 		inputVec.x = Input.GetAxisRaw("Horizontal");
@@ -29,17 +34,16 @@ public class Player : MonoBehaviour {
 		if (inputVec.magnitude > 1) {
 			inputVec /= inputVec.magnitude;
 		}
+
+		if (myHurtbox.iFrames > 0) {
+			iFrameColor.a = 1 - ((myHurtbox.iFrames % 4 > 2) ? 1 : 0); // wow
+			mySpriteRenderer.color = iFrameColor;
+		}
 	}
 
-	void FixedUpdate() {
-		internalVel *= 0;
+	bool WalkState(StateMachine stateM, int frameNo) {
+		myRigidbody2d.velocity = inputVec * 5;
 
-		internalVel += inputVec * 4;
-
-		if (addVelocity != null) {addVelocity(internalVel);}
-		
-		myRigidbody2d.velocity = internalVel;
+		return false;
 	}
-
-	
 }

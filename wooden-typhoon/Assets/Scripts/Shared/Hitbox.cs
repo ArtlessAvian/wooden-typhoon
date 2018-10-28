@@ -6,16 +6,25 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class Hitbox : MonoBehaviour {
 
+    // If the hitbox isnt attached to a child of a GameObject
+    // Also, if you see this, reminder to make projectiles
+    public bool floatingHitbox = false;
+    
     public int damage = 1;
+    public Vector2 receivedKnockback = new Vector2();
 
     public delegate void OnHit(Hurtbox other);
     public OnHit onHit;
 
-    private Collider2D myCollider;
     private List<GameObject> ignoreHits = new List<GameObject>();
+    
+    private Collider2D myCollider;
+    private Rigidbody2D myRigidbody2D;
 
     void Start () {
         myCollider = GetComponent<Collider2D>();
+        myRigidbody2D = GetComponentInParent<Rigidbody2D>();
+        
         onHit += tempOnHit;
 	}
 
@@ -48,5 +57,21 @@ public class Hitbox : MonoBehaviour {
     void tempOnHit(Hurtbox other)
     {
         print(name + " hit something!");
+    }
+
+    internal bool KnockbackRecoil(StateMachine stateM, int frameNo)
+    {
+        if (frameNo > 6)
+        {
+            myRigidbody2D.velocity *= 0;
+            stateM.state = stateM.defaultState;
+            return true;
+        }
+        else
+        {
+            myRigidbody2D.velocity = receivedKnockback;
+            receivedKnockback *= 0.7f; // did someone say magic number? A good feel is between 0.5 and 0.9 so far.
+            return false;
+        }
     }
 }
