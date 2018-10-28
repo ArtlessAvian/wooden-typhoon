@@ -9,6 +9,7 @@ public class Hurtbox : MonoBehaviour {
     // Passively gets hit by hitboxes
 
     public int iFrames = 0;
+    public int totalDamage = 0;
 
     public delegate void OnHit(Hitbox other);
     public OnHit onHit;
@@ -23,11 +24,14 @@ public class Hurtbox : MonoBehaviour {
         myRigidbody2D = GetComponent<Rigidbody2D>();
         myCollider = GetComponent<Collider2D>();
         myStateMachine = GetComponent<StateMachine>();
-        onHit += tempOnHit;
+        onHit += takeDamage;
 	}
 
-    public void tempOnHit(Hitbox other) {
-        print("OOF");
+    public void takeDamage(Hitbox other) {
+        int damage = other.getDamage();
+        totalDamage += damage;
+        // Spawn Damage Popup?
+        print(damage + " damage taken");
     }
 
     public void ApplyMutualRecoil(Hitbox other) {
@@ -44,9 +48,7 @@ public class Hurtbox : MonoBehaviour {
         other.receivedKnockback = knockback * -5;
         knockback *= 20; 
 
-        if (tag == "Player") {
-            iFrames = 30;
-        }
+        iFrames = (tag == "Player") ? 30 : 10;
 
         myStateMachine.SetState(KnockbackRecoil);
         other.GetComponentInParent<StateMachine>().SetState(other.KnockbackRecoil);
@@ -80,6 +82,7 @@ public class Hurtbox : MonoBehaviour {
     const int HITBOX_LAYER = 9;
     void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.layer != HITBOX_LAYER) {return;}
+        if (other.gameObject.tag == gameObject.tag) {return;}
 
         Hitbox otherHitbox = other.gameObject.GetComponentInParent<Hitbox>();
         print(gameObject.name + " hit by " + other.gameObject.name);

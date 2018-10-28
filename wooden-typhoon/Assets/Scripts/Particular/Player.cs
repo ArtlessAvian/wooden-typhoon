@@ -5,6 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D), typeof(StateMachine))]
 public class Player : MonoBehaviour {
 
+    public GlobalPlayerData.PlayerStats stats;
+	
 	private Vector2 inputVec = new Vector2();
 
 	private Rigidbody2D myRigidbody2d;
@@ -21,13 +23,16 @@ public class Player : MonoBehaviour {
 		// Manually Destroy Me
 		UnityEngine.Object.DontDestroyOnLoad(this);
 
+		GlobalPlayerData data = GameObject.Find("GlobalPlayerData").GetComponent<GlobalPlayerData>();
+		stats = new GlobalPlayerData.PlayerStats(data.baseStats);
+
 		myStateMachine.SetState(WalkState);
 		myHurtbox.onHit += myHurtbox.ApplyMutualRecoil;
 	}
 
 	private Color iFrameColor = new Color(1, 1, 1, 1);
 
-	void Update () {
+    void Update () {
 		inputVec.x = Input.GetAxisRaw("Horizontal");
 		inputVec.y = Input.GetAxisRaw("Vertical");
 

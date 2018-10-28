@@ -6,6 +6,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D), typeof(StateMachine))]
 public class Enemy : MonoBehaviour {
 
+	public int health = 30;
+
 	private GameObject thePlayer;
 
 	private Rigidbody2D myRigidBody;
@@ -20,8 +22,17 @@ public class Enemy : MonoBehaviour {
 		myStateMachine = GetComponent<StateMachine>();
 
 		myHurtbox.onHit += myHurtbox.ApplyMutualRecoil;
+		myHurtbox.onHit += checkDie;
 		myStateMachine.SetState(Idle);
 	}
+
+    private void checkDie(Hitbox other)
+    {
+		if (myHurtbox.totalDamage >= health)
+		{
+			GameObject.Destroy(gameObject);
+		}
+    }
 
     private bool Idle(StateMachine stateM, int frameNo)
     {

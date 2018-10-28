@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 61353728265314926}
   - component: {fileID: 114399785133703122}
   - component: {fileID: 114287790151746566}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: SomeWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -190,7 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa26f1aaca712494e8ec570e78605770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  floatingHitbox: 0
   receivedKnockback: {x: 0, y: 0}
 --- !u!114 &114399511964599496
 MonoBehaviour:
@@ -204,6 +204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   iFrames: 0
+  totalDamage: 0
 --- !u!114 &114399785133703122
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -219,6 +220,7 @@ MonoBehaviour:
   activeFrames: 10
   followThrough: 5
   size: {x: 2, y: 2}
+  damage: 1
   swinging: 0
 --- !u!114 &114413251102439046
 MonoBehaviour:
@@ -242,6 +244,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fca7ed64ece2ae4c97efc2ef629901d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stats:
+    health: 0
+    attack: 0
 --- !u!212 &212431212669705608
 SpriteRenderer:
   m_ObjectHideFlags: 1

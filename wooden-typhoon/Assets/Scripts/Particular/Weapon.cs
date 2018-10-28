@@ -10,16 +10,21 @@ public class Weapon : MonoBehaviour {
     public int followThrough = 5;
     public Vector2 size = new Vector2(3, 3); // Weapon points to the right
 
+    public int damage = 1;
+
     public bool swinging = false;
     int swingFrame = -1;
 
     Hitbox myHitbox;
+    GlobalPlayerData.PlayerStats myStats;
 
     public void Start() {
         myHitbox = GetComponent<Hitbox>();
-        myHitbox.Deactivate();
-
+        myStats = GetComponentInParent<Player>().stats;
+        
         transform.localPosition = new Vector2(size.x * 0.5f, 0);
+        myHitbox.Deactivate();
+        myHitbox.getDamage = calcDamage;
     }
 
     public void FixedUpdate() {
@@ -42,4 +47,10 @@ public class Weapon : MonoBehaviour {
             swingFrame++;
         }
     }
+
+    public int calcDamage()
+    {
+        return 3;
+    }
+
 }

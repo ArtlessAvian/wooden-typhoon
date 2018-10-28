@@ -9,10 +9,10 @@ public class Hitbox : MonoBehaviour {
     // If the hitbox isnt attached to a child of a GameObject
     // Also, if you see this, reminder to make projectiles
     public bool floatingHitbox = false;
-    
-    public int damage = 1;
     public Vector2 receivedKnockback = new Vector2();
-
+    
+    public delegate int GetDamage();
+    public GetDamage getDamage = () => 1;
     public delegate void OnHit(Hurtbox other);
     public OnHit onHit;
 
