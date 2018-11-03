@@ -8,13 +8,13 @@ public class Enemy : MonoBehaviour {
 
 	public int health = 30;
 
-	private GameObject thePlayer;
+	protected GameObject thePlayer;
 
-	private Rigidbody2D myRigidBody;
-	private Hurtbox myHurtbox;
-	private StateMachine myStateMachine;
+	protected Rigidbody2D myRigidBody;
+	protected Hurtbox myHurtbox;
+	protected StateMachine myStateMachine;
 
-	void Start () {
+	public void Start () {
 		thePlayer = GameObject.Find("Player");
 	
 		myRigidBody = GetComponent<Rigidbody2D>();
@@ -23,6 +23,7 @@ public class Enemy : MonoBehaviour {
 
 		myHurtbox.onHit += myHurtbox.ApplyMutualRecoil;
 		myHurtbox.onHit += checkDie;
+
 		myStateMachine.SetState(Idle);
 	}
 
