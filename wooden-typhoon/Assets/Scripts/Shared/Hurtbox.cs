@@ -31,11 +31,11 @@ public class Hurtbox : MonoBehaviour {
         int damage = other.getDamage();
         totalDamage += damage;
         // Spawn Damage Popup?
-        print(damage + " damage taken");
+        //print(damage + " damage taken");
     }
 
     public void ApplyMutualRecoil(Hitbox other) {
-        print("apply mutual");
+        //print("apply mutual");
         knockback = transform.position;
         if (other.floatingHitbox) {
             knockback -= (Vector2)other.transform.position;
@@ -85,7 +85,7 @@ public class Hurtbox : MonoBehaviour {
         if (other.gameObject.tag == gameObject.tag) {return;}
 
         Hitbox otherHitbox = other.gameObject.GetComponentInParent<Hitbox>();
-        print(gameObject.name + " hit by " + other.gameObject.name);
+        //print(gameObject.name + " hit by " + other.gameObject.name);
 
         if (confirmHit(otherHitbox))
         {

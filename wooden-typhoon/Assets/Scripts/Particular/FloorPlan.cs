@@ -5,6 +5,12 @@ using UnityEngine;
 public class FloorPlan : MonoBehaviour {
 
 	// I shouldn't be writing everything. Maybe take this as inspiration?
+	// Also for test behavior, maybe make the numpad transition between rooms like
+	//   8 9
+	// 4   6
+	// 1 2
+
+
 
     // private const int numFloorTypes = 3;
 	// static List<GameObject>[] floorTypeToRooms = new List<GameObject>[numFloorTypes];

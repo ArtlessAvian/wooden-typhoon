@@ -6,7 +6,7 @@ using UnityEngine;
 public class Chaser : Enemy {
 
 	// Use this for initialization
-	void Start () {
+	new void Start () {
 		base.Start();
 
 		base.myStateMachine.state = Chase;
@@ -20,8 +20,8 @@ public class Chaser : Enemy {
         vec = thePlayer.transform.position;
         vec -= (Vector2)transform.position;
 
-        vec *= 2 / vec.magnitude;
         // Magic Numbers Intesify
+        vec *= 2 / vec.magnitude;
         
 		myRigidBody.velocity = vec; 		
 		return false;

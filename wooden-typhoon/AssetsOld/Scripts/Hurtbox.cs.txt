@@ -73,12 +73,12 @@ public class Hurtbox : MonoBehaviour {
 	{
 		// Ask the other how much it should be hit for
 		// Somehow :/
-		print(gameObject.name + " hit by " + other.gameObject.name);
+		//print(gameObject.name + " hit by " + other.gameObject.name);
 		
 		if (other.gameObject.Equals(ignoreHits)) {return;}
 		if (other.gameObject.layer != HITBOX_LAYER) {return;}
 		if (other.tag == tag) {return;} // ignore self collision
-		print("damage dealt!");
+		//print("damage dealt!");
 
 		// Testing
 		

@@ -7,7 +7,7 @@ public class WeaponList : MonoBehaviour {
 	Weapon activeWeapon;
 
 	void Start() {
-
+		
 	}
 	
 	void Update() {

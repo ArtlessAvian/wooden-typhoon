@@ -47,7 +47,8 @@ public class Weapon : MonoBehaviour {
             swingFrame++;
         }
     }
-
+    
+    // Weapon calculates its own damage using the stats.
     public int calcDamage()
     {
         return 3;

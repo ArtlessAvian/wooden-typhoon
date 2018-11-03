@@ -53,10 +53,10 @@ public class Player : MonoBehaviour {
 	}
 
 	void TempDie(GameObject player, Collider2D other) {
-		print("mega oof");
+		//print("mega oof");
 	}
 
 	void ReceiveHit(GameObject player, Collider2D other) {
-		print("oof");
+		//print("oof");
 	}
 }

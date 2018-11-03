@@ -18,11 +18,11 @@ public class Hitbox : MonoBehaviour {
 
     private List<GameObject> ignoreHits = new List<GameObject>();
     
-    private Collider2D myCollider;
+    // private Collider2D myCollider;
     private Rigidbody2D myRigidbody2D;
 
     void Start () {
-        myCollider = GetComponent<Collider2D>();
+        // myCollider = GetComponent<Collider2D>();
         myRigidbody2D = GetComponentInParent<Rigidbody2D>();
         
         onHit += tempOnHit;
@@ -56,7 +56,7 @@ public class Hitbox : MonoBehaviour {
 
     void tempOnHit(Hurtbox other)
     {
-        print(name + " hit something!");
+        //print(name + " hit something!");
     }
 
     internal bool KnockbackRecoil(StateMachine stateM, int frameNo)

@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class GlobalPlayerData : MonoBehaviour {
 
-	// It's definitely not a singleton, I'd call it a Prototype Pattern???
+	// It's definitely not a singleton, I'd call it a Prototype Pattern
 	[Serializable]
 	public class PlayerStats {
 		public float health = 0;
@@ -15,7 +15,6 @@ public class GlobalPlayerData : MonoBehaviour {
 		public PlayerStats() {}
 
 		public PlayerStats(PlayerStats toCopy) {
-			// Yeah, definitely a prototype
 			health = toCopy.health;
 			attack = toCopy.attack;
 		}
