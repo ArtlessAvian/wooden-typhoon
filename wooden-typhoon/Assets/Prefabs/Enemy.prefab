@@ -41,8 +41,9 @@ GameObject:
   - component: {fileID: 50779186105271876}
   - component: {fileID: 114179600895799126}
   - component: {fileID: 114849704331061408}
+  - component: {fileID: 114202975762171510}
   m_Layer: 8
-  m_Name: Enemy
+  m_Name: EnemyPrototype
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -158,6 +159,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iFrames: 0
   totalDamage: 0
+--- !u!114 &114202975762171510
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1887254896844200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb61c2543d526e84fa45cb6947f8aca9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 30
 --- !u!114 &114849704331061408
 MonoBehaviour:
   m_ObjectHideFlags: 1

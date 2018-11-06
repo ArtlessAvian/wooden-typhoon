@@ -5,6 +5,10 @@ Inspired by a post on the "Good Bad Ideas" board.
 ## Goals/Scope
 lol idk.
 
+## Workflow!
+When testing a prefab not "decorated" by code (aka manually decorating yourself through the editor),
+create the prefab, then use GameObject > Break Prefab Instance in the toolbar up top.
+
 ## Contributing
 Avoid working directly in the master branch, unless its trivial.
 

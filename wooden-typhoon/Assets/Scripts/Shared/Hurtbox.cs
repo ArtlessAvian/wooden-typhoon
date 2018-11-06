@@ -51,7 +51,11 @@ public class Hurtbox : MonoBehaviour {
         iFrames = (tag == "Player") ? 30 : 10;
 
         myStateMachine.SetState(KnockbackRecoil);
-        other.GetComponentInParent<StateMachine>().SetState(other.KnockbackRecoil);
+
+        StateMachine otherStateMachine = other.GetComponentInParent<StateMachine>();
+        if (otherStateMachine != null) {
+            otherStateMachine.SetState(other.KnockbackRecoil);
+        }
     }
 
     private bool KnockbackRecoil(StateMachine stateM, int frameNo) {
@@ -80,12 +84,18 @@ public class Hurtbox : MonoBehaviour {
     }
 
     const int HITBOX_LAYER = 9;
+    const int PROJECTILE_LAYER = 10;
     void OnTriggerEnter2D(Collider2D other) {
-        if (other.gameObject.layer != HITBOX_LAYER) {return;}
+        if (other.gameObject.layer != HITBOX_LAYER){
+            if (other.gameObject.layer != PROJECTILE_LAYER){
+                return;
+            }
+        }
+
         if (other.gameObject.tag == gameObject.tag) {return;}
 
         Hitbox otherHitbox = other.gameObject.GetComponentInParent<Hitbox>();
-        //print(gameObject.name + " hit by " + other.gameObject.name);
+        print(gameObject.name + " hit by " + other.gameObject.name);
 
         if (confirmHit(otherHitbox))
         {
