@@ -55,7 +55,7 @@ func _process(delta):
 	$Sprite.frame += int(walk_frames % 20 < 8)
 	
 	if i_frames > 1:
-		$Sprite.self_modulate.a = 1 - int(i_frames % 2)
+		$Sprite.self_modulate.a = int(i_frames % 4 >= 2)
 
 func respond_to_hit(other_entity, damage):
 	i_frames = 10

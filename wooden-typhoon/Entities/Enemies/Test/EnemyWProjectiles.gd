@@ -19,8 +19,5 @@ func phys_process_workaround(delta):
 		instance.aim_at(player)
 		
 		testtesttesttest -= 60
-
-func respond_to_hit(other_entity, damage):
-	.respond_to_hit(other_entity, damage)
-	if (health <= 0):
-		queue_free()
+	
+	.phys_process_workaround(delta)
