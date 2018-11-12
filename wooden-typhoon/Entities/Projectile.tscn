@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Entities/Entity.gd" type="Script" id=1]
+[ext_resource path="res://Entities/Projectile.gd" type="Script" id=1]
 
-[node name="Entity" type="KinematicBody2D"]
+[node name="Projectile" type="KinematicBody2D"]
 
 input_pickable = false
 collision_layer = 0
@@ -23,7 +23,7 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-collision_layer = 24
+collision_layer = 16
 collision_mask = 0
 audio_bus_override = false
 audio_bus_name = "Master"
@@ -40,10 +40,10 @@ gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
 collision_layer = 0
-collision_mask = 6
+collision_mask = 4
 audio_bus_override = false
 audio_bus_name = "Master"
-_sections_unfolded = [ "Audio Bus", "Collision" ]
+_sections_unfolded = [ "Collision" ]
 __meta__ = {
 "_edit_lock_": true
 }
@@ -78,6 +78,30 @@ max_lines_visible = -1
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="Label2" type="Label" parent="Label" index="0"]
+
+modulate = Color( 1, 0.675781, 0.675781, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 188.0
+margin_right = 452.0
+margin_bottom = 253.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Hello!
+
+Same thing as entities"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Visibility" ]
 
 [connection signal="area_entered" from="Hitboxes" to="." method="_on_Hitboxes_area_entered"]
 

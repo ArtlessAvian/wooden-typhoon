@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 39.5127, 23.2948 )
+extents = Vector2( 42, 20 )
 
 [sub_resource type="Animation" id=2]
 
@@ -52,10 +52,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 10 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ -45.0, -40.0 ]
+"values": [ -45.0 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("../CollisionShape2D:disabled")
@@ -82,10 +82,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 4, 6 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 6 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 0.0, -45.0, -46.0 ]
+"values": [ 45.0, -45.0 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("../CollisionShape2D:disabled")
@@ -100,7 +100,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
-[node name="Weapon" type="Area2D"]
+[node name="Weapon" type="Area2D" index="0"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -116,15 +116,18 @@ _sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 
-position = Vector2( 40.3754, 0.31105 )
+position = Vector2( 42, 0 )
 shape = SubResource( 1 )
+disabled = true
+_sections_unfolded = [ "Transform" ]
 
 [node name="Sprite" type="Sprite" parent="." index="1"]
 
 texture = ExtResource( 2 )
 offset = Vector2( 50, 0 )
 flip_h = true
-_sections_unfolded = [ "Offset" ]
+flip_v = true
+_sections_unfolded = [ "Offset", "Transform" ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite" index="0"]
 

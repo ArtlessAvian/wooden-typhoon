@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Hammer.png-6edd3bb3e9faff9ef0f75dd9e9938a42.stex"
+path="res://.import/Hammer.png-ed74e2a7a3d853db29cb1ac04e72eb56.stex"
 
 [deps]
 
-source_file="res://Entities/Enemies/Hammer.png"
-dest_files=[ "res://.import/Hammer.png-6edd3bb3e9faff9ef0f75dd9e9938a42.stex" ]
+source_file="res://Entities/Enemies/Test/Hammer.png"
+dest_files=[ "res://.import/Hammer.png-ed74e2a7a3d853db29cb1ac04e72eb56.stex" ]
 
 [params]
 

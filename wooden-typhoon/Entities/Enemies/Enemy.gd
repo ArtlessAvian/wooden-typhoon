@@ -4,12 +4,20 @@ extends "../Entity.gd"
 # var a = 2
 # var b = "textvar"
 
-func _ready():
-	# Called when the node is added to the scene for the first time.
-	# Initialization here
-	pass
+var player;
 
-#func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass
+func _ready():
+	if (player == null):
+		player = get_node("/root/Floor/Player")
+
+func phys_process_workaround(delta):
+	
+	move_and_slide((player.global_position - global_position).normalized() * 64)
+	
+	.phys_process_workaround(delta)
+
+func respond_to_hit(other_entity, damage):
+	.respond_to_hit(other_entity, damage)
+	if (health <= 0):
+		queue_free()
+
