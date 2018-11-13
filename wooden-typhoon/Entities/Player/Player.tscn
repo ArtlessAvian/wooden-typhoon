@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Entities/Player/Player.gd" type="Script" id=1]
+[ext_resource path="res://Entities/Player/Copy of $CorgSprites.png" type="Texture" id=2]
+[ext_resource path="res://Entities/Player/Weapon.tscn" type="PackedScene" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 16.0
+
+[node name="Player" type="KinematicBody2D"]
+
+input_pickable = false
+collision_layer = 0
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+_sections_unfolded = [ "Collision" ]
+
+[node name="Sprite" type="Sprite" parent="." index="0"]
+
+texture = ExtResource( 2 )
+vframes = 4
+hframes = 3
+frame = 7
+_sections_unfolded = [ "Animation", "Transform" ]
+
+[node name="Hurtboxes" type="Area2D" parent="." index="1"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 6
+collision_mask = 0
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtboxes" index="0"]
+
+shape = SubResource( 1 )
+
+[node name="Weapon" parent="." index="2" instance=ExtResource( 3 )]
+
+collision_mask = 24
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
+
+shape = SubResource( 1 )
+
+[connection signal="area_entered" from="Weapon" to="." method="_on_Hitboxes_area_entered"]
+
+
